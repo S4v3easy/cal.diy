@@ -213,7 +213,9 @@ describe("Schedules Endpoints", () => {
       await userRepositoryFixture.deleteByEmail(user.email);
       try {
         await scheduleRepositoryFixture.deleteById(createdSchedule.id);
-      } catch (_e) {}
+      } catch (_e) {
+        console.error("Failed to delete schedule in afterAll cleanup:", _e);
+      }
 
       await app.close();
     });
